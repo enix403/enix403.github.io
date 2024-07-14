@@ -289,3 +289,52 @@ Unlike covariance, correlation is dimensionless, meaning it has no units and ran
   - $\text{Corr}(X, Y) \; = \; 0$: No linear relationship
 
 Correlation is often preferred in practical applications because it allows for easy comparison of relationships across different datasets. The bounded range of correlation makes it easier to interpret For example, a correlation of $0.8$ immediately suggests a strong positive relationship.
+
+## Probabilistic View
+
+Covariance is deeply rooted in the probabilistic framework, making it an essential concept in understanding the relationships between random variables. By examining covariance from a probabilistic perspective, we can uncover its connections to expected values, variance, and other fundamental ideas in statistics.
+
+Let $X$ and $Y$ be two random variables. Covariance in the probabilistic sense is defined as the expected value of the product of their deviations from their respective means:
+
+$$
+\text{Cov}(X, Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])]
+$$
+
+where:
+  - $\mathbb{E}[X]$ and $\mathbb{E}[Y]$ are the expected values (means) of $X$ and $Y$.
+  - The term $(X - \mathbb{E}[X])$ represents the deviation of $X$ from its mean, and similarly for $Y$.
+
+
+We can derive an alternate formula for covariance. By expanding the definition using the distributive property, this expands to:
+
+$$
+\begin{align}
+
+\text{Cov}(X, Y) &= \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] \\
+  &= \mathbb{E}[XY - X\mathbb{E}[Y] - \mathbb{E}[X]Y + \mathbb{E}[X]\mathbb{E}[Y]] \\
+  &= \mathbb{E}[XY] - \mathbb{E}[X\mathbb{E}[Y]] - \mathbb{E}[\mathbb{E}[X]Y] + \mathbb{E}[\mathbb{E}[X]\mathbb{E}[Y]] \\
+  &= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y] - \mathbb{E}[X]\mathbb{E}[Y] + \mathbb{E}[X]\mathbb{E}[Y] \\
+  &= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
+\end{align}
+$$
+
+This alternate formula is particularly useful because it simplifies the computation of covariance when $\mathbb{E}[XY]$ and the individual means are known.
+
+#### **An Important Special Case: Covariance and Variance**
+
+A fascinating consequence of the covariance formula is when $X = Y$. In this case, covariance reduces to the variance of $X$:
+
+$$
+\text{Cov}(X, X) = \mathbb{E}[(X - \mathbb{E}[X])^2] = \text{Var}(X).
+$$
+
+This result highlights that variance is simply a measure of how a single variable varies with itself. It also reinforces the idea that covariance generalizes variance to pairs of variables.
+
+#### **A few Key Insights**
+
+1. **Symmetry**: Covariance is symmetric, meaning $\text{Cov}(X, Y) = \text{Cov}(Y, X)$.
+2. **Linearity**: Covariance is linear with respect to each variable. For example, if $Z = aX$, then:
+   $$
+   \text{Cov}(Z, Y) = a \cdot \text{Cov}(X, Y).
+   $$
+3. **Independence and Covariance**: If $X$ and $Y$ are independent, their covariance is zero because $\mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y]$.
