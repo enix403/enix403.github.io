@@ -2,14 +2,21 @@
   const { children } = $props();
 </script>
 
-<main>
-  {@render children?.()}
+<main class="max-w-full py-12 px-8 flex justify-center">
+  <div class="max-w-[800px]">
+    {@render children?.()}
+  </div>
 </main>
 
-<style>
+<!-- <main>
+  {@render children?.()}
+</main>
+ -->
+<!-- <style>
   main {
+    width: 800px;
     max-width: 800px;
-    padding: 48px 0;
+    /* padding: 48px 24px; */
     margin: auto;
   }
-</style>
+</style> -->
