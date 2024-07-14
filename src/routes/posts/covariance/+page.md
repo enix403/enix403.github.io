@@ -6,9 +6,223 @@ title: Covariance vs Correlation
   import {math, display} from 'mathlifier';
 </script>
 
+<style lang="scss">
+  @charset "UTF-8";
+  @use 'sass:math';
+  @use './variables.scss';
+
+  hr {
+    background: variables.$color-accent;
+    height: 1px;
+    border: 0;
+  }
+
+  /* Heading */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    // check imported weights and styles in gatsby-browser.jsx
+    margin: variables.$spacing-12 0 variables.$spacing-6;
+    line-height: variables.$line-height-tight;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: variables.$font-weight-bold;
+    color: variables.$color-heading;
+  }
+
+  h1 {
+    margin-top: 0;
+    font-weight: variables.$font-weight-black;
+    font-size: variables.$font-size-6;
+    font-style: italic;
+    color: variables.$color-heading-black;
+  }
+
+  h2 {
+    font-size: variables.$font-size-5;
+    font-weight: variables.$font-weight-semibold;
+    color: variables.$color-heading;
+  }
+
+  h3 {
+    font-size: variables.$font-size-4;
+  }
+
+  h4 {
+    font-size: variables.$font-size-3;
+  }
+
+  h5 {
+    font-size: variables.$font-size-2;
+  }
+
+  h6 {
+    font-size: variables.$font-size-1;
+  }
+
+  /* Prose */
+  p {
+    line-height: variables.$line-height-relaxed;
+    $baseline-multiplier: 0.179;
+    $x-height-multiplier: 0.35;
+    margin: variables.$spacing-0 variables.$spacing-0 variables.$spacing-4 variables.$spacing-0;
+    padding: variables.$spacing-0;
+  }
+
+  ul,
+  ol {
+    margin-left: variables.$spacing-0;
+    margin-right: variables.$spacing-0;
+    padding: variables.$spacing-0;
+    margin-bottom: variables.$spacing-8;
+    list-style-position: inside;
+    list-style-image: none;
+  }
+
+  li p {
+    display: inline;
+  }
+
+  ul li,
+  ol li {
+    padding-left: variables.$spacing-0;
+    margin-bottom: math.div(variables.$spacing-8, 2);
+  }
+
+  li > p {
+    margin-bottom: math.div(variables.$spacing-8, 2);
+  }
+
+  li *:last-child {
+    margin-bottom: variables.$spacing-0;
+  }
+
+  li > ul {
+    margin-left: variables.$spacing-8;
+    margin-top: math.div(variables.$spacing-8, 2);
+  }
+
+  blockquote {
+    color: variables.$color-theme-4;
+    margin-left: calc(#{-1 + variables.$spacing-6});
+    margin-right: variables.$spacing-8;
+    padding: variables.$spacing-0 variables.$spacing-0 variables.$spacing-0 variables.$spacing-6;
+    border-left: variables.$spacing-1 solid variables.$color-primary;
+    font-size: variables.$font-size-2;
+    font-style: italic;
+    margin-bottom: variables.$spacing-8;
+  }
+
+  blockquote > :last-child {
+    margin-bottom: variables.$spacing-0;
+  }
+
+  blockquote > ul,
+  blockquote > ol {
+    list-style-position: inside;
+  }
+
+  table {
+    width: 100%;
+    margin-bottom: variables.$spacing-8;
+    border-collapse: collapse;
+    border-spacing: 0.25rem;
+  }
+
+  table thead tr th {
+    border-bottom: 1px solid variables.$color-accent;
+  }
+
+  /* Link */
+  a {
+    color: variables.$color-theme-4;
+  }
+
+  a,
+  button {
+    // browser will not anticipate double click so proceeds with action quicker (300 ms quicker)
+    touch-action: manipulation;
+  }
+
+  button:focus,
+  button:hover {
+    cursor: pointer;
+  }
+
+  h1 > a {
+    color: inherit;
+    text-decoration: none;
+  }
+  h2 > a,
+  h3 > a,
+  h4 > a,
+  h5 > a,
+  h6 > a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: none;
+  }
+
+  figure {
+    margin-bottom: variables.$spacing-6;
+    padding-bottom: variables.$spacing-6;
+  }
+
+  figure figcaption {
+    margin-top: variables.$spacing-2;
+  }
+
+  /* Media queries */
+  @media (max-width: variables.$desktop-breakpoint) {
+    h1 {
+      font-size: variables.$mobile-font-size-6;
+    }
+
+    h2 {
+      font-size: variables.$mobile-font-size-5;
+    }
+
+    h3 {
+      font-size: variables.$mobile-font-size-4;
+    }
+
+    h4 {
+      font-size: variables.$mobile-font-size-3;
+    }
+
+    h5 {
+      font-size: variables.$mobile-font-size-2;
+    }
+
+    h6 {
+      font-size: variables.$mobile-font-size-1;
+    }
+
+    blockquote {
+      padding: variables.$spacing-0 variables.$spacing-0 variables.$spacing-0 variables.$spacing-4;
+      margin-left: variables.$spacing-0;
+    }
+    ul,
+    ol {
+      list-style-position: inside;
+    }
+  }
+</style>
+
 # Taking String Arguments in Rust
 
-*Posted on Tue 24 December 2019 in Code*
+_Posted on Tue 24 December 2019 in Code_
 
 $f(x) = x^2$
 
