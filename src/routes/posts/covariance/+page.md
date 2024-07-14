@@ -223,6 +223,10 @@
   }
 </style>
 
+<svelte:head>
+  <title>Covariance and Correlation</title>
+</svelte:head>
+
 # Covariance and Correlation
 
 Covariance and Correlation are key statistical measures which quantify the degree to which two variables change together. This concept forms the foundation of many advanced techniques, from portfolio optimization in finance to dimensionality reduction in machine learning.
@@ -292,9 +296,7 @@ Correlation is often preferred in practical applications because it allows for e
 
 ## Probabilistic View
 
-Covariance is deeply rooted in the probabilistic framework, making it an essential concept in understanding the relationships between random variables. By examining covariance from a probabilistic perspective, we can uncover its connections to expected values, variance, and other fundamental ideas in statistics.
-
-Let $X$ and $Y$ be two random variables. Covariance in the probabilistic sense is defined as the expected value of the product of their deviations from their respective means:
+Covariance can also be understood in the context of random variables. Let $X$ and $Y$ be two random variables. Covariance in the probabilistic sense is defined as the expected value of the product of their deviations from their respective means:
 
 $$
 \text{Cov}(X, Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])]
@@ -322,7 +324,7 @@ This alternate formula is particularly useful because it simplifies the computat
 
 #### **An Important Special Case: Covariance and Variance**
 
-A fascinating consequence of the covariance formula is when $X = Y$. In this case, covariance reduces to the variance of $X$:
+An interesting consequence of the covariance formula is when $X = Y$. In this case, covariance reduces to the variance of $X$:
 
 $$
 \text{Cov}(X, X) = \mathbb{E}[(X - \mathbb{E}[X])^2] = \text{Var}(X).
@@ -338,3 +340,57 @@ This result highlights that variance is simply a measure of how a single variabl
    \text{Cov}(Z, Y) = a \cdot \text{Cov}(X, Y).
    $$
 3. **Independence and Covariance**: If $X$ and $Y$ are independent, their covariance is zero because $\mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y]$.
+
+---
+
+### **The Covariance Matrix**
+
+We can extend our understanding of covariance to datasets with multiple variables through a **covariance matrix**. The covariance matrix is a square, symmetric matrix that contains the covariances between all pairs of variables in a dataset. For a dataset with $p$ variables $X_{1},...,X_{p}$ , the covariance matrix $\mathbf{\Sigma}$ is defined as:
+
+$$
+\mathbf{\Sigma} =
+\begin{bmatrix}
+\text{Var}(X_1) & \text{Cov}(X_1, X_2) & \cdots & \text{Cov}(X_1, X_p) \\
+\text{Cov}(X_2, X_1) & \text{Var}(X_2) & \cdots & \text{Cov}(X_2, X_p) \\
+\vdots & \vdots & \ddots & \vdots \\
+\text{Cov}(X_p, X_1) & \text{Cov}(X_p, X_2) & \cdots & \text{Var}(X_p)
+\end{bmatrix}.
+$$
+
+Each entry $\mathbf{\Sigma}_{i,j}$ = $\text{Cov}(X_i, X_j)$ represents the covariance between the $i$-th and $j$-th variables, and the diagonal elements $\text{Var}(X_i)$ represent the variances of the individual variables.
+
+The covariance matrix is symmetric because $\text{Cov}(X_i, X_j) = \text{Cov}(X_j, X_i)$.
+
+#### **Computing the Covariance Matrix**
+
+Given a dataset with $n$ observations and $p$ variables, let $\mathbf{X}$ represent the data matrix of dimensions $n \times p$, where each row corresponds to an observation, and each column corresponds to a variable.
+
+1. **Mean-Center the Data**
+   Subtract the mean of each variable from its respective column:
+   $$
+   \mathbf{X}_{\text{centered}} = \mathbf{X} - \mathbf{\bar{X}},
+   $$
+   where $\mathbf{\bar{X}}$ is the row vector of means of each column (variable).
+
+2. **Compute the Covariance Matrix**
+   The covariance matrix is given by:
+   $$
+   \mathbf{\Sigma} = \frac{1}{n-1} \mathbf{X}_{\text{centered}}^T \mathbf{X}_{\text{centered}}.
+   $$
+
+#### **An Example with Three Variables**
+
+Consider a dataset with three variables: $X_1$ (study hours), $X_2$ (test scores), and $X_3$ (sleep hours). A possible covariance matrix might look like this:
+
+$$
+\mathbf{\Sigma} =
+\begin{bmatrix}
+4.0 & 2.5 & -1.0 \\
+2.5 & 6.0 & -1.2 \\
+-1.0 & -1.2 & 3.0
+\end{bmatrix}.
+$$
+
+- The variances of $X_1$, $X_2$, and $X_3$ are on the diagonal: $4.0$, $6.0$, and $3.0$.
+- The covariance between study hours and test scores is $2.5$, indicating a positive relationship.
+- The covariance between study hours and sleep hours is $-1.0$, indicating an inverse relationship.
