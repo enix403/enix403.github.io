@@ -1,6 +1,8 @@
-import { mdsvex } from 'mdsvex';
+import { mdsvex, escapeSvelte } from 'mdsvex';
 import adapterStatic from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+import { createHighlighter } from 'shiki'
 
 import rehypeKatexSvelte from 'rehype-katex-svelte';
 import remarkMath from 'remark-math';
@@ -17,7 +19,19 @@ const config = {
         rehypeKatexSvelte
         /* other rehype plugins... */
       ],
-      extensions: ['.md']
+      extensions: ['.md'],
+      highlight: {
+        highlighter: async (code, lang = 'text') => {
+          const theme = "material-theme-darker"
+          const highlighter = await createHighlighter({
+            themes: [theme],
+            langs: ['javascript', 'typescript', 'rust']
+          })
+          // await highlighter.loadLanguage('javascript', 'typescript', 'rust')
+          const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme: theme }))
+          return `{@html \`${html}\` }`
+        }
+      },
     })
   ],
 
