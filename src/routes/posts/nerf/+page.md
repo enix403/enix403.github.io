@@ -224,6 +224,7 @@
 based on tinynerf
 hirarical sampling
 training and loss
+converting to 3d point cloud mesh
 -->
 
 # Understanding NeRF
@@ -501,7 +502,7 @@ $$
 \gamma(p) = \left(\sin(2^0 \pi p), \cos(2^0 \pi p), \ldots, \sin(2^{L-1} \pi p), \cos(2^{L-1} \pi p)\right)
 $$
 
-This function $γ(\cdot)$ is applied separately to each of the three coordinate values.
+This function $\gamma(p)$ is applied separately to each of the three coordinate values.
 
 Here is the code for that
 
@@ -580,17 +581,13 @@ class SimpleNeRF(nn.Module):
         return self.layers(x)
 ```
 
-<!--
+### Training the Neural Network
 
-#### **Positional Encoding**
+The neural network is optimized to minimize the MSE loss between the rendered pixel values and the ground truth from input images:
 
+#### Loss Calculation
 
-
----
-
-#### **Optimization and Training**
-
-The neural network $F_\theta$ is optimized to minimize the photometric loss between the rendered pixel values and the ground truth from input images:
+The loss function used in the paper is a simple mean squared error loss between the predicted color and the true color of each pixel of the image.
 
 $$
 \mathcal{L} = \sum_{\mathbf{r} \in \mathcal{R}} \left\| \mathbf{C}(\mathbf{r}) - \mathbf{C}^\text{GT}(\mathbf{r}) \right\|_2^2
@@ -598,7 +595,73 @@ $$
 
 Here, $\mathcal{R}$ is the set of rays corresponding to the input images, and $\mathbf{C}^\text{GT}(\mathbf{r})$ represents the true pixel color for each ray.
 
----
+#### Training Loop
 
+We can use a standard pytorch training flow for training the network. I will not get into the details of the loading the training data, but on a high level, each training example is a pose along with it's ground truth rendered image.
 
--->
+```py
+# Assume this is a list of (pose, image) tuples
+train_dataset = ...
+
+# Also assume that variables (like height and width, etc) are
+# set appropriately
+
+def predict(pose: torch.Tensor):
+    return nf_render_pose(
+        height,
+        width,
+        model,
+        focal_length,
+        pose=pose,
+        thresh_near=2,
+        thresh_far=6,
+        num_samples_per_ray=32,
+    )
+
+# Create the model
+model = SimpleNeRF()
+optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+
+num_epochs = 16
+for i in range(num_epochs):
+    for target_pose, target_image in train_dataset:
+        optimizer.zero_grad()
+
+        image_predicted = predict(target_pose)
+        loss = F.mse_loss(image_predicted, target_image)
+
+        loss.backward()
+        optimizer.step()
+```
+
+Once the training is complete, the network can be used to view the scene from any arbitrary position and viewing angle! You can do something like this
+
+```py
+def random_spherical_pose(radius=4):
+    """Generates a random pose on a sphere of given radius"""
+
+    theta = (torch.rand(1) * torch.pi * 2).item()
+    phi = (torch.rand(1) * torch.pi * 2).item()
+
+    R_x = torch.tensor([[1, 0, 0],
+                        [0, torch.cos(theta), -torch.sin(theta)],
+                        [0, torch.sin(theta), torch.cos(theta)]])
+
+    R_y = torch.tensor([[torch.cos(phi), 0, torch.sin(phi)],
+                        [0, 1, 0],
+                        [-torch.sin(phi), 0, torch.cos(phi)]])
+
+    cam_rot = R_y @ R_x
+
+    # Make the camera look towards the origin
+    cam_backwards = cam_rot[:, -1]
+    cam_pos = radius * cam_backwards
+
+    pose = torch.eye(4)
+    pose[:3, :3] = cam_rot
+    pose[:3, -1] = cam_pos
+
+    return pose
+
+plt.imshow(predict(random_spherical_pose()).detach())
+```
