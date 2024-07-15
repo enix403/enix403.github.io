@@ -222,7 +222,6 @@
 <!--
 
 based on tinynerf
-paper ref
 hirarical sampling
 training and loss
 -->
@@ -494,7 +493,9 @@ The network will be simple MLP with position and view direction input and will o
 
 #### Positional Encoding
 
-We can directly feed the query points and viewing directions into the neural network. However, as the paper suggest, it is beneficial to map the query points to a high-dimensional space before evaluation. The mapping is called _positional encoding_ and maps a 3D coordinate into a $3 + 6L$-D coordinate, where $L$ is a configurable hyperparameter.
+We can directly feed the query points and viewing directions into the neural network. However, as the paper suggest, it is beneficial to map the query points to a high-dimensional space before evaluation. NeRF employs **positional encoding** of the input coordinates $\mathbf{x}$ and $\mathbf{d}$. Raw inputs are transformed into higher-dimensional representations using sinusoidal functions.
+
+The encoding maps a 3D coordinate into a $3 + 6L$-D coordinate, where $L$ is a configurable hyperparameter.
 
 $$
 \gamma(p) = \left(\sin(2^0 \pi p), \cos(2^0 \pi p), \ldots, \sin(2^{L-1} \pi p), \cos(2^{L-1} \pi p)\right)
@@ -523,6 +524,8 @@ def positional_encoding(
         return torch.cat(encoding, dim=-1)
 ```
 
+This encoding allows the neural network to capture fine details and complex variations in lighting and geometry, as highlighted in the NeRF paper.
+
 Also, we will need a few more helper functions for the working of the network.
 
 ```py
@@ -548,15 +551,40 @@ def embed_len_3d(L: int):
     return 3 + 6 * L
 ```
 
+And finally, here is a simple network.
+
+```py
+class SimpleNeRF(nn.Module):
+    def __init__(self):
+        super().__init__()
+
+        hidden_size = 128
+
+        self.layers = nn.Sequential(
+            # Layer 1: input (both pos and view dir)
+            nn.Linear(
+                embed_len_3d(embed_num_pos) + embed_len_3d(embed_num_dir),
+                hidden_size
+            ),
+            nn.ReLU(),
+            # Hidden layers
+            torch.nn.Linear(hidden_size, hidden_size), nn.ReLU(),
+            torch.nn.Linear(hidden_size, hidden_size), nn.ReLU(),
+            # Output layer (colors + density)
+            torch.nn.Linear(hidden_size, 4),
+        )
+
+    def forward(self, queries: torch.Tensor):
+        x_pos, x_dir = split_queries(queries)
+        x = torch.cat([x_pos, x_dir], dim=-1)
+        return self.layers(x)
+```
+
 <!--
 
 #### **Positional Encoding**
 
-To model high-frequency details effectively, NeRF employs **positional encoding** of the input coordinates $\mathbf{x}$ and $\mathbf{d}$. Raw inputs are transformed into higher-dimensional representations using sinusoidal functions:
 
-
-
-This encoding allows the neural network to capture fine details and complex variations in lighting and geometry, as highlighted in the NeRF paper.
 
 ---
 
