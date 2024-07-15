@@ -224,7 +224,7 @@
 based on tinynerf
 paper ref
 hirarical sampling
-
+training and loss
 -->
 
 # Understanding NeRF
@@ -486,15 +486,75 @@ def nf_render_view_field(
     return c_r
 ```
 
+That the bulk of rendering part done. Now we will move to designing the actual neural network.
+
+### Creating the Neural Network
+
+The network will be simple MLP with position and view direction input and will output 4 values representing the $(R, G, B)$ color and the volume density $\sigma$ at the given position.
+
+#### Positional Encoding
+
+We can directly feed the query points and viewing directions into the neural network. However, as the paper suggest, it is beneficial to map the query points to a high-dimensional space before evaluation. The mapping is called _positional encoding_ and maps a 3D coordinate into a $3 + 6L$-D coordinate, where $L$ is a configurable hyperparameter.
+
+$$
+\gamma(p) = \left(\sin(2^0 \pi p), \cos(2^0 \pi p), \ldots, \sin(2^{L-1} \pi p), \cos(2^{L-1} \pi p)\right)
+$$
+
+This function $γ(\cdot)$ is applied separately to each of the three coordinate values.
+
+Here is the code for that
+
+```py
+def positional_encoding(
+    points: torch.Tensor,
+    L: int=6,
+):
+    encoding = [points]
+
+    freqs = 2.0 ** torch.linspace(0.0, L - 1, L)
+
+    for freq in freqs:
+        encoding.append(torch.sin(points * freq))
+        encoding.append(torch.cos(points * freq))
+
+    if len(encoding) == 1:
+        return encoding[0]
+    else:
+        return torch.cat(encoding, dim=-1)
+```
+
+Also, we will need a few more helper functions for the working of the network.
+
+```py
+embed_num_pos = 6
+embed_num_dir = 6
+
+def split_queries(
+    self,
+    # (B, 6)
+    queries: torch.Tensor
+):
+    # (B, 3)
+    points = queries[..., :3]
+    # (B, 3)
+    viewdirs = queries[..., 3:]
+
+    x_pos = positional_encoding(points, embed_num_pos)
+    x_dir = positional_encoding(viewdirs, embed_num_dir)
+
+    return x_pos, x_dir
+
+def embed_len_3d(L: int):
+    return 3 + 6 * L
+```
+
 <!--
 
 #### **Positional Encoding**
 
 To model high-frequency details effectively, NeRF employs **positional encoding** of the input coordinates $\mathbf{x}$ and $\mathbf{d}$. Raw inputs are transformed into higher-dimensional representations using sinusoidal functions:
 
-$$
-\gamma(p) = \left(\sin(2^0 \pi p), \cos(2^0 \pi p), \ldots, \sin(2^{L-1} \pi p), \cos(2^{L-1} \pi p)\right)
-$$
+
 
 This encoding allows the neural network to capture fine details and complex variations in lighting and geometry, as highlighted in the NeRF paper.
 
