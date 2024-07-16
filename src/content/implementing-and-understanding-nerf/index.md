@@ -1,6 +1,5 @@
 ---
-title: My Post One
-slug: my-post-one
+title: Implementing And Understanding NeRF
 date: '2024-12-21T15:29:33.000Z'
 ---
 

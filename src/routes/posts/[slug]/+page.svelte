@@ -26,7 +26,7 @@
       'mx-auto w-full max-w-[800px] pb-72',
       'post-content',
       'prose prose-neutral',
-      'prose-a:text-pink-600 prose-a:no-underline',
+      'prose-a:text-pink-600 hover:prose-a:text-pink-500 prose-a:no-underline',
     )}
   >
     <ContentBody />
@@ -38,6 +38,10 @@
     pre {
       @apply px-2.5 py-2;
       @apply overflow-x-auto;
+    }
+
+    pre * {
+      font-style: normal !important;
     }
 
     .math-display {
