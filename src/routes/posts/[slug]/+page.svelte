@@ -4,6 +4,12 @@
   const { frontmatter, ContentBody } = data;
 </script>
 
+<svelte:head>
+  <title>{frontmatter.title}</title>
+</svelte:head>
+
+<!-- ------------------------- -->
+
 <h1>
   <strong>
     {frontmatter.title}
