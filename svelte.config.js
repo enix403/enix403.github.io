@@ -26,7 +26,7 @@ const config = {
           const theme = "catppuccin-latte"
           const highlighter = await createHighlighter({
             themes: [theme],
-            langs: ['javascript', 'typescript', 'rust', 'python']
+            langs: ['javascript', 'typescript', 'rust', 'python'],
           })
           // await highlighter.loadLanguage('javascript', 'typescript', 'rust')
           const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme: theme }))
