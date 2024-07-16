@@ -7,5 +7,5 @@ export default {
     extend: {}
   },
 
-  plugins: [require("rippleui")]
+  plugins: []
 } satisfies Config;
