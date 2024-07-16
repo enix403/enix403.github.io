@@ -12,23 +12,22 @@
 
 <!-- ------------------------- -->
 
-<h1>
-  <strong>
-    {frontmatter.title}
-  </strong>
-</h1>
-
-<hr />
-
-<main class="max-w-full px-4 py-4">
+<main class="max-w-full px-5 py-4">
   <div
     class={clsx(
-      'mx-auto w-full max-w-[800px] pb-72',
+      'mx-auto w-full max-w-[800px] pb-40',
       'post-content',
       'prose prose-neutral',
-      'prose-a:text-pink-600 hover:prose-a:text-pink-500 prose-a:no-underline',
+      'prose-a:text-pink-600 hover:prose-a:text-pink-500 prose-a:no-underline'
     )}
   >
+    <div class="mt-10">
+      <!-- <h1 class="text-center text-[#961bd3]"> -->
+      <h1 class="text-center font-semibold font-mono text-[#296FFD]">
+        {frontmatter.title}
+      </h1>
+      <p class="text-slate-500 text-sm font-mono font-thin">December 29, 2021</p>
+    </div>
     <ContentBody />
   </div>
 </main>

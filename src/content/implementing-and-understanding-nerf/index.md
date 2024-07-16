@@ -35,6 +35,7 @@ Below is a step by step implementation of NeRF, in Python and PyTorch. Throughou
 import torch
 from torch import nn
 import torch.nn.functional as F
+import matplotlib.pyplot as plt
 ```
 
 #### Let's start
