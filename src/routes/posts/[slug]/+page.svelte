@@ -12,8 +12,8 @@
 
 <hr />
 
-<main class="flex max-w-full justify-center px-4 lg:px-24 py-4">
-  <div class="w-full max-w-[800px] pb-72 post-content">
+<main class="max-w-full px-4 py-4">
+  <div class="post-content w-full max-w-[800px] pb-72 mx-auto">
     <ContentBody />
   </div>
 </main>

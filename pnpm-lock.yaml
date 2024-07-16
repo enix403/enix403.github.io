@@ -14,6 +14,9 @@ importers:
       '@fontsource-variable/archivo':
         specifier: ^5.1.0
         version: 5.1.0
+      katex:
+        specifier: ^0.16.18
+        version: 0.16.18
       lucide-svelte:
         specifier: ^0.469.0
         version: 0.469.0(svelte@5.15.0)

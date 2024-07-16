@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.1.0",
+    "katex": "^0.16.18",
     "lucide-svelte": "^0.469.0",
     "mathlifier": "^2.0.3",
     "rehype-katex-svelte": "^1.2.0",
