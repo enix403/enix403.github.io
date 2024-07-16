@@ -216,18 +216,11 @@
 
 <svelte:head>
 
-  <title>Understanding NeRF</title>
+  <title>Understanding and Implementing NeRF</title>
 </svelte:head>
 
-<!--
 
-based on tinynerf
-hirarical sampling
-training and loss
-converting to 3d point cloud mesh
--->
-
-# Understanding NeRF
+# Understanding and Implementing NeRF
 
 ### **Introduction**
 
@@ -258,14 +251,9 @@ Ray are marched through the scene (starting from the camera), and this neural ne
 Below is a step by step implementation of NeRF, in Python and PyTorch. Throughout the code, assume the following imports are available throughout.
 
 ```py
-from pathlib import Path
-
 import torch
 from torch import nn
 import torch.nn.functional as F
-import torchvision as tv
-
-import numpy as np
 ```
 
 #### Let's start
@@ -637,8 +625,8 @@ for i in range(num_epochs):
 Once the training is complete, the network can be used to view the scene from any arbitrary position and viewing angle! You can do something like this
 
 ```py
+# Generates a random pose on a sphere of given radius
 def random_spherical_pose(radius=4):
-    """Generates a random pose on a sphere of given radius"""
 
     theta = (torch.rand(1) * torch.pi * 2).item()
     phi = (torch.rand(1) * torch.pi * 2).item()
@@ -665,3 +653,13 @@ def random_spherical_pose(radius=4):
 
 plt.imshow(predict(random_spherical_pose()).detach())
 ```
+
+### Conclusion
+
+Neural Radiance Fields (NeRF) does offer unprecedented quality and flexibility for reconstructing scenes from sparse image data. However, its computational demands and static scene assumption are some areas for improvement. Training a NeRF model is computationally intensive and often requirs hours or even days on powerful GPUs.
+
+There are some interesting ideas that I haven't touched in this post, such as hierarchical sampling which optimizes NeRF’s efficiency, and converting the learned scene volume representation into 3D point cloud meshes — all of this perhaps for another post.
+
+One thing to note is that the standard NeRF formulation assumes that the scene is static, making it unsuitable for dynamic environments where objects or lighting conditions change over time. Extensions like _Dynamic NeRF_ attempt to address this, but these approaches add complexity and often require significantly more data.
+
+At the end, I recommend reading the original paper "NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis."
