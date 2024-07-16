@@ -1,5 +1,6 @@
 import type { PageLoad } from './$types';
-import type { Frontmatter } from '$lib/components/Post.svelte';
+
+import type { Frontmatter } from '$lib/types/Frontmatter';
 import type { Component } from 'svelte';
 
 export const load: PageLoad = async ({ params }) => {
