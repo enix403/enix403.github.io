@@ -1,9 +1,12 @@
 <script lang="ts">
   import type { PageData } from './$types';
   import clsx from 'clsx';
+  import { format } from 'date-fns';
 
   const { data }: { data: PageData } = $props();
   const { frontmatter, ContentBody } = data;
+
+  const dateParsed = new Date(frontmatter.date);
 </script>
 
 <svelte:head>
@@ -26,7 +29,7 @@
       <h1 class="text-center font-semibold font-mono text-[#296FFD]">
         {frontmatter.title}
       </h1>
-      <p class="text-slate-500 text-sm font-mono font-thin">December 29, 2021</p>
+      <p class="text-slate-500 text-sm font-mono font-thin">{format(dateParsed, 'MMMM dd, yyyy')}</p>
     </div>
     <ContentBody />
   </div>
