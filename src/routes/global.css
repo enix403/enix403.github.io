@@ -2,16 +2,21 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import '@fontsource-variable/archivo';
+/* @import '@fontsource-variable/archivo'; */
 @import '@fontsource-variable/fira-code';
+
+@import "@fontsource/pt-serif/400.css";
+@import "@fontsource/pt-serif/700.css";
 
 html,
 body {
 	height: 100%;
+  font-size: 18px;
 }
 
 html {
-  font-family: 'Archivo Variable', sans-serif;
+  /* font-family: 'Archivo Variable', sans-serif; */
+  font-family: 'PT Serif', sans-serif;
 }
 
 code, pre, tt, kbd, samp {
@@ -21,7 +26,5 @@ code, pre, tt, kbd, samp {
 body {
   overflow-x: hidden;
   overflow-y: auto;
-
-  /* background-color: #FEFCEBFF; */
 }
 
