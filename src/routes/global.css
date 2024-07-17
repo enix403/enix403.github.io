@@ -3,7 +3,6 @@
 @import 'tailwindcss/utilities';
 
 @import '@fontsource-variable/archivo';
-/* @import '@fontsource/jetbrains-mono'; */
 
 html,
 body {
@@ -17,5 +16,8 @@ html {
 body {
   overflow-x: hidden;
   overflow-y: auto;
+
+  /* background-color: #FEFCEBFF; */
+  background-color: #E6E7F3;
 }
 
