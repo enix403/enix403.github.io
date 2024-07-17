@@ -186,7 +186,7 @@ All this (<small>_convoluted_</small>) piece of code does is create and evaluate
 The paper presents the following equation to get the final accumulated color of a ray $\mathbf{r}$.
 
 $$
-\text{C}(\mathbf{r}) = \sum_{i=1}^{n}T_i(1 - \text{exp}(-\sigma_i\delta_i))\mathbf{c}_i \\
+\text{C}(\mathbf{r}) = \sum_{i=1}^{n}T_i(1 - \text{exp}(-\sigma_i\delta_i))\mathbf{c}_i
 $$
 
 where
