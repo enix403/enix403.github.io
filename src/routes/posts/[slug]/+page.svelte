@@ -25,8 +25,8 @@
     )}
   >
     <div class="mt-10">
-      <!-- <h1 class="text-center text-[#961bd3]"> -->
-      <h1 class="text-center font-semibold font-mono text-[#296FFD]">
+      <!-- <h1 class="text-center font-semibold font-mono text-[#296FFD]"> -->
+      <h1 class="text-center font-semibold font-mono text-[#da1ad4]">
         {frontmatter.title}
       </h1>
       <p class="text-slate-500 text-sm font-mono font-thin">{format(dateParsed, 'MMMM dd, yyyy')}</p>
