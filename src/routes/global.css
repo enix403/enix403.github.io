@@ -26,5 +26,7 @@ code, pre, tt, kbd, samp {
 body {
   overflow-x: hidden;
   overflow-y: auto;
+
+  color: rgb(224, 221, 217);
 }
 
