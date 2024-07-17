@@ -46,6 +46,10 @@
       font-style: normal !important;
     }
 
+    :not(pre) code {
+      color: #6B0095FF;
+    }
+
     .math-display {
       @apply overflow-x-auto;
       @apply px-4;
