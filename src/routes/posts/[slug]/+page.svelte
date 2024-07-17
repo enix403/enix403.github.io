@@ -15,7 +15,7 @@
 
 <!-- ------------------------- -->
 
-<main class="max-w-full px-5 py-4">
+<div class="max-w-full px-5 py-4">
   <div
     class={clsx(
       'mx-auto w-full max-w-[800px] pb-40',
@@ -33,7 +33,7 @@
     </div>
     <ContentBody />
   </div>
-</main>
+</div>
 
 <style>
   .post-content :global {

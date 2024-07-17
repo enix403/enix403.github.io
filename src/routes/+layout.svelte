@@ -5,4 +5,6 @@
   const { children } = $props();
 </script>
 
-{@render children?.()}
+<main class="bg-[#E6E7F3]">
+  {@render children?.()}
+</main>
