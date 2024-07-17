@@ -20,39 +20,25 @@
   <title>{frontmatter.title}</title>
 </svelte:head>
 
-<!-- ------------------------- -->
-
-<!-- <div class="max-w-full" data-css="px-5 py-4">
-  <div class={clsx('mx-autod w-full', 'post-content', 'prose')} data-css="max-w-[800px] pb-40">
-    <div>
-      <h1 class="text-center font-semibold">
-        {frontmatter.title}
-      </h1>
-      <p class="font-mono text-sm font-thin text-slate-500">
-        {format(dateParsed, 'MMMM dd, yyyy')}
-      </p>
-    </div>
-    <ContentBody />
-  </div>
-</div> -->
-
-<div class="post-content">
+<div class="post-wrapper px-8">
   <!-- Title -->
-  <h1 class="font-semibold">
+  <header class="border-b border-[#413e3e] pb-3">
+  <h1 class="!my-0 font-semibold">
     {frontmatter.title}
   </h1>
   <!-- Date -->
-  <p class="font-mono text-sm font-thin text-slate-500">
-    {format(dateParsed, 'MMMM dd, yyyy')}
+  <p class="!mb-0 !mt-1 text-sm font-thin italic text-slate-500">
+    Posted by Qateef Ahmad on {format(dateParsed, 'MMMM dd, yyyy')}
   </p>
+  </header>
   <!-- Body -->
-  <ContentBody />
+  <div class="post-body">
+    <ContentBody />
+  </div>
 </div>
 
-
 <style>
-  .post-content :global {
-    /* ----- Colors ----- */
+  .post-wrapper :global {
     @apply prose !max-w-none;
     @apply prose-invert;
     @apply prose-a:no-underline;
@@ -62,11 +48,10 @@
     @apply prose-li:text-[#E8E6E3];
 
     .math {
-      /* @apply text-[#f5f4f2]; */
       @apply text-[#ffffff];
     }
 
-    :not(pre) code {
+    :not(pre) > code {
       color: rgb(216, 208, 55);
       /* color: rgb(178, 172, 162); */
       background-color: rgb(24, 26, 27);
@@ -78,10 +63,18 @@
 
     /* ----- Layouts ----- */
 
-    :not(pre) code::before {
+    .post-body > *:first-child {
+      @apply !mt-0;
+    }
+
+    .post-body {
+      @apply pt-6;
+    }
+
+    :not(pre) > code::before {
       content: '' !important;
     }
-    :not(pre) code::after {
+    :not(pre) > code::after {
       content: '' !important;
     }
 

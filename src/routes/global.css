@@ -23,10 +23,15 @@ code, pre, tt, kbd, samp {
   font-family: "Fira Code Variable", monospace;
 }
 
+:root {
+  --app-bg-color: #1C1E1E;
+}
+
 body {
   overflow-x: hidden;
   overflow-y: auto;
 
   color: rgb(224, 221, 217);
+  background-color: var(--app-bg-color);
 }
 
