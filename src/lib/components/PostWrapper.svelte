@@ -1,5 +1,4 @@
 <script lang="ts">
-  import clsx from 'clsx';
   import { format } from 'date-fns';
 
   import type { Frontmatter } from '$lib/types/Frontmatter';
@@ -22,7 +21,7 @@
 
 <div class="post-wrapper">
   <!-- Title -->
-  <header class="border-b border-app-line pb-3 prose-sm md:prose-base">
+  <header class="prose-sm border-b border-app-line pb-3 md:prose-base">
     <h1 class="!my-0 font-semibold">
       {frontmatter.title}
     </h1>
@@ -38,17 +37,21 @@
 </div>
 
 <style>
+
   .post-wrapper :global {
     @apply prose !max-w-none;
     @apply prose-invert;
     @apply prose-a:no-underline;
-    @apply prose-a:text-yellow-400 hover:prose-a:text-yellow-500;
-    @apply prose-headings:text-[#ffffff];
-    @apply prose-p:leading-6 prose-p:text-[#E8E6E3];
-    @apply prose-li:text-[#E8E6E3];
+    @apply prose-headings:text-[--app-heading-color];
+    @apply prose-p:leading-6 prose-p:text-[--app-text-color];
+    @apply prose-li:text-[--app-text-color];
+
+    a {
+      @apply !text-yellow-400 hover:!text-yellow-500;
+    }
 
     .math {
-      @apply text-[#ffffff];
+      @apply text-[--app-math-color];
     }
 
     :not(pre) > code {

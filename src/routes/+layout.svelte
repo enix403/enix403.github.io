@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
   import './global.css';
   import 'katex/dist/katex.min.css';
 
+  // @ts-ignore
   import SocialIcons from '@rodneylab/svelte-social-icons';
 
   const { children } = $props();

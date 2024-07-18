@@ -6,7 +6,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'app-line': '#413E3E'
+        'app-line': '#413E3E',
+        "app-muted": "var(--app-muted-color)"
       }
     }
   },
