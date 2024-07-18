@@ -20,16 +20,16 @@
   <title>{frontmatter.title}</title>
 </svelte:head>
 
-<div class="post-wrapper px-8">
+<div class="post-wrapper">
   <!-- Title -->
-  <header class="border-b border-[#413e3e] pb-3">
-  <h1 class="!my-0 font-semibold">
-    {frontmatter.title}
-  </h1>
-  <!-- Date -->
-  <p class="!mb-0 !mt-1 text-sm font-thin italic text-slate-500">
-    Posted by Qateef Ahmad on {format(dateParsed, 'MMMM dd, yyyy')}
-  </p>
+  <header class="border-b border-[#413e3e] pb-3 prose-sm md:prose-base">
+    <h1 class="!my-0 font-semibold">
+      {frontmatter.title}
+    </h1>
+    <!-- Date -->
+    <p class="!mb-0 !mt-1 text-sm font-thin italic text-slate-500">
+      Posted by Qateef Ahmad on {format(dateParsed, 'MMMM dd, yyyy')}
+    </p>
   </header>
   <!-- Body -->
   <div class="post-body">
