@@ -1,6 +1,6 @@
 ---
 title: Covariance and Correlation
-date: '2024-12-21T15:29:33.000Z'
+date: '2024-12-21T00:00:00.000Z'
 ---
 
 <script>
