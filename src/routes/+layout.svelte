@@ -14,18 +14,18 @@
   </div>
 
   <div class="mx-auto mb-20 flex max-w-[1280px] items-stretch">
-    <div class="flex-1 px-6 pt-10 md:px-8">
-      {@render children?.()}
+    <div class="flex-1 px-6 pt-10 md:px-8 max-w-full">
+      <div class="w-full max-w-full">
+        {@render children?.()}
+      </div>
     </div>
-    <div class="w-56 shrink-0 bg-[#191917] px-4 py-4 text-[0.813rem] max-md:hidden">
+    <div class="w-56 shrink-0 bg-[#191917] px-4 py-4 text-[0.813rem] max-xl:hidden">
       <h2 class="border-app-line border-b text-lg">About Me</h2>
       <p class="mt-1">
-        I'm a self-taught programmer with interests in programming languages, human languages, Rust,
-        physics, and online communities to name a few.
+        Hi, I am a self-taught programmer that likes technology, programming, mathematics, and artificial intelligence. Beyond coding, I enjoy writing articles here.
       </p>
       <p class="mt-4">
-        I'm heavily involved in the Rust programming language, leading the Devtools and Clippy
-        teams. I also work at Google on ICU4X.
+        I also like 3d modelling, though I have just started and I am total beginner in it.
       </p>
     </div>
   </div>
