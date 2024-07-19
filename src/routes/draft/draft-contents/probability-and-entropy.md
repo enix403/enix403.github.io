@@ -17,7 +17,11 @@ Probability distributions underly most of generative AI. Once an AI model has le
 
 ### The Bayesian View of Probability
 
-You might have learned about probability in high school in terms of fractions, such as 1/2 for getting heads after flipping a coin and 1/6 for getting a 4 after rolling a die. This approach is called the *frequentist view*, where probabilities are interpreted as the fractions of number of possible and total events. However, this is just one view of probability. Here we will start fresh with the *Bayesian view* of probability.
+You might have learned about probability in high school in terms of fractions, such as 1/2 for getting heads after flipping a coin and 1/6 for getting a 4 after rolling a die. This approach is called the *frequentist view*, where probabilities are interpreted as the fractions of number of possible and total events. This approach does work for simple scenarios like rolling a die, but things can get complicated when continous and infinite events are involved.
 
-Suppose that we have a set of $N$ possible states $\{ S_1, S_2, \dots, S_N \}$ to which we assign probabilities $\{ p_1, p_2, \dots, p_N \}$. Each of these probabilities $p_i$ is a number between 0 and 1, and is a **measure of belief** or **confidence** about the outcome $S_i$ happening.
+To see this, consider that your weather app tells you that there is a 35% chance that tomorrow will be snowfall. Now how can we apply the frequentist view here? We do intuitively understand this 35% percent chance of snowfall, but there is no way we can fit this into a fraction involving something like number of possible and/or total event.
+
+Anyway, here we will start fresh with the *Bayesian view* of probability.
+
+Suppose that we have a set of $N$ possible outcomes $\{ E_1, E_2, \dots, E_N \}$ to which we assign probabilities $\{ p_1, p_2, \dots, p_N \}$. Each of these probabilities $p_i$ is a number between 0 and 1, and is a **measure of belief** or **confidence** about the outcome $E_i$ happening.
 
