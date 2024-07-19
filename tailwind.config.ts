@@ -7,6 +7,7 @@ export default {
     extend: {
       colors: {
         'app-line': '#413E3E',
+        "app-text": "var(--app-text-color)",
         "app-muted": "var(--app-muted-color)"
       }
     }

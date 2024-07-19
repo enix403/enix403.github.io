@@ -11,8 +11,6 @@
     frontmatter: Frontmatter;
     ContentBody: Component;
   } = $props();
-
-  const dateParsed = new Date(frontmatter.date);
 </script>
 
 <svelte:head>
@@ -27,7 +25,7 @@
     </h1>
     <!-- Date -->
     <p class="!mb-0 !mt-1 text-sm font-thin italic text-slate-500">
-      Posted by Qateef Ahmad on {format(dateParsed, 'MMMM dd, yyyy')}
+      Posted by Qateef Ahmad on {format(frontmatter.date, 'MMMM dd, yyyy')}
     </p>
   </header>
   <!-- Body -->
