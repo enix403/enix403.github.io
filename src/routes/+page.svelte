@@ -3,9 +3,9 @@
   import type { PageData } from './$types';
 
   const { data }: { data: PageData } = $props();
-  const { posts } = data;
+  const { groupedPosts } = data;
 
-  console.log(posts);
+  console.log(groupedPosts);
 
 </script>
 

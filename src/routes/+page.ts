@@ -21,5 +21,22 @@ export const load: PageLoad = async () => {
     }
   }
 
-  return { posts };
+  posts.sort(
+    (a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
+  );
+
+  const groupedPosts = posts.reduce<{ year: string; posts: typeof posts }[]>((acc, post) => {
+    const year = new Date(post.frontmatter.date).getFullYear().toString();
+    const yearGroup = acc.find((group) => group.year === year);
+
+    if (yearGroup) {
+      yearGroup.posts.push(post);
+    } else {
+      acc.push({ year, posts: [post] });
+    }
+
+    return acc;
+  }, []);
+
+  return { groupedPosts };
 };
