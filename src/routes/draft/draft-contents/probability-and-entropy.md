@@ -98,3 +98,15 @@ One function that satisfies all these conditions is the negative logarithm of $p
 $$
 H(p) = -\log(p) = \log \left( \frac{1}{p} \right)
 $$
+
+This surprise value is formally known as the _entropy_ or _information content_ of the event. The entropy $H(p)$ quantifies the amount of uncertainty packed in an event.
+
+### Entopy of the Distribution
+
+Now that we have the the entropy of a single event, we can calculate the average entropy of the entire distribution, by just taking the sum of entopies of all the possible events weighted by their probabilities
+
+$$
+H(P) = \sum_{s} p_s \log \left( \frac{1}{p_s} \right)
+$$
+
+This quantity is called the entropy of the distribution (as opposed of entopy of a single event)
