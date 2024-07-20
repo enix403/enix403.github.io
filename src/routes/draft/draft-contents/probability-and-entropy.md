@@ -43,6 +43,12 @@ $$
 \int_{s} p(s) = 1
 $$
 
+Finally, the product of probabilities two (independent) events represents the probability of both of them happening:
+
+$$
+p(A \thickspace \text{and} \thickspace B) = p(A) \times p(B)
+$$
+
 Now this assignment of probabilities to events is what's called a _probability distribution_. It is a function $p(e)$ that maps an event to its assigned probability.
 
 ### Designing Probability Distributions
@@ -67,4 +73,28 @@ Now that the foundational stuff is cleared up, we can start exploring some mathe
 
 ### Entopy
 
-Let's start with the notion of _surprise_. Suppose you are about to flip the unfair coin as described above, and somebody comes up to you and predicts that the outcome will be tails. You say, "Well, ahm" and go ahead and flip the coin. Now, the coin does flip to a tail, hence the prediction did hold true. _Would you be surprised or not_ ? You knew that the tails was much more likely to happen anyway, and thus the occurance of tails must not have surprised you that much
+Let's start with the notion of _surprise_. Suppose you are about to flip the unfair coin as described above, and somebody comes up to you and predicts that the outcome will be tails. You say, "Well, ahm" and go ahead and flip the coin. Now, the coin does flip to a tail, hence the prediction did hold true. _Would you be surprised or not_? You knew that the tails was much more likely to happen anyway, and thus the occurance of tails must not have surprised you that much.
+
+Now what if, instead of tails, the somebody comes up to you and predicts that the outcome will be _heads_, and sure enough, it does turn out to be a heads. What will be your level of surprisal this time? The outcome of heads was very unlikely to occur, yet it occured. _This must be surprising_.
+
+Now suppose that the correct prediction of heads happened twice i.e the person predicted the heads again and the outcome was also head, again. This time you will be surprised twice as much you would have been if only one coin flip had been made.
+
+Let's try to formulize this notion of surprise. We will represent the surprise of an event with a positive real number. Based on the above thinking, we can conclude some points about the surprise of an event:
+
+- It assigns a positve number to the event.
+- It is a function of probability of the event. Let's call it $H(p)$.
+- It assigns large numbers (more surprise) to events with low probability (rare events), and small numbers (less surprise) to events with high probability (common events).
+- The surprise of two events happening at the same time is the sum of their individual surprises, i.e:
+
+  $H(p_A \times p_B) = H(p_A) + H(p_B)$
+
+We can add some more rules based on above observations:
+
+- An event with probability $1$ bears absolutely no surprise i.e $H(1) = 0$.
+- An event with probability $0$ is so much surprising that we can assign a surprise of infinity to it i.e $H(0) = \infin$.
+
+One function that satisfies all these conditions is the negative logarithm of $p$:
+
+$$
+H(p) = -\log(p) = \log \left( \frac{1}{p} \right)
+$$
