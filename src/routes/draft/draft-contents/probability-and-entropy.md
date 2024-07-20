@@ -173,3 +173,9 @@ D_{KL}(P \space \Vert \space P) &= H(P, P) - H(P) \\
 &= 0
 \end{align*}
 $$
+
+KL divergence is foundational to many generative AI models, as it help these systems learn to approximate and sample from complex data distributions. By framing the generation process as sampling from some modeled distribution of data, and then minimizing the KL divergence between the model's learned distribution and the true data distribution, generative models can produce outputs that closely resemble real-world data. This is the heart of most generative AI models. When the model's distribution aligns well with the true data distribution, it can sample from this learned distribution to produce new, unseen examples that maintain the characteristics of the original data and this e.g is what allows generative AI to create lifelike images.
+
+## Conclusion
+
+Well, probability is much more than just a branch of mathematics. It’s the foundation upon which many models are built. Probability and probability distributions serves as a bridge between randomness and understanding, and as we saw above, it provides us with some really useful tools to quantify uncertainty and make informed decisions.
