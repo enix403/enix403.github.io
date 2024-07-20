@@ -1,6 +1,6 @@
 ---
 title: But What is Probability ?
-date: '2024-12-20T00:00:00.000Z'
+date: '2024-12-24T00:00:00.000Z'
 ---
 
 Here's a thought experiment: Imagine that you are talking a stroll in woods, and suddenly you hear a voice from far. It does sound like a wolf, but it could also be a dog. Or maybe it’s just the terrifying sound of otherwise harmless rustling water. _What is it ?_
