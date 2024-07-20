@@ -17,11 +17,11 @@ Probability distributions underly most of generative AI. Once an AI model has le
 
 ### The Bayesian View of Probability
 
-You might have learned about probability in high school in terms of fractions, such as 1/2 for getting heads after flipping a coin and 1/6 for getting a 4 after rolling a die. This approach is called the *frequentist view*, where probabilities are interpreted as the fractions of number of possible and total events. This approach does work for simple scenarios like rolling a die, but things can get complicated when continous and infinite events are involved.
+You might have learned about probability in high school in terms of fractions, such as 1/2 for getting heads after flipping a coin and 1/6 for getting a 4 after rolling a die. This approach is called the _frequentist view_, where probabilities are interpreted as the fractions of number of possible and total events. This approach does work for simple scenarios like rolling a die, but things can get complicated when continous and infinite events are involved.
 
 To see this, consider that your weather app tells you that there is a $35$% chance that tomorrow will be snowfall. Now how can we apply the frequentist view here? We do intuitively understand this $35$% percent chance of snowfall, but there is no way we can fit this into a fraction involving something like number of possible and/or total events.
 
-Anyway, here we will start fresh with the *Bayesian view* of probability.
+Anyway, here we will start fresh with the _Bayesian view_ of probability.
 
 Suppose that we have a set of $N$ possible outcomes $\{ s_1, \dots, s_N \}$ to which we assign probabilities $\{ p_1, \dots, p_N \}$. Each of these probabilities $p_i$ is a number between 0 and 1, and is a **measure of belief** or **confidence** about the outcome $E_i$ happening. Like in the above example, when we say that there is a $35$% chance that tomorrow will be snowfall, it means that the the outcome of snow falling tomorrow has been **assigned** the probability or **degree of belief** of $0.35$. Note that there is no indication of fractions or repeated experiments whatsoever in this approach.
 
@@ -37,7 +37,7 @@ $$
 \sum_{s} p(s) = 1
 $$
 
-In case of a continous set of events, like heights of people, the probabilites must integrate to $1$:
+In case of a continous set of events, like heights of people, the probabilities must integrate to $1$:
 
 $$
 \int_{s} p(s) = 1
@@ -71,7 +71,7 @@ However the distribution is not always uniform. To understand this, consider an 
 
 Now that the foundational stuff is cleared up, we can start exploring some mathematical tools to study and understand probability distributions.
 
-### Entopy
+### Entropy
 
 Let's start with the notion of _surprise_. Suppose you are about to flip the unfair coin as described above, and somebody comes up to you and predicts that the outcome will be tails. You say, "Well, ahm" and go ahead and flip the coin. Now, the coin does flip to a tail, hence the prediction did hold true. _Would you be surprised or not_? You knew that the tails was much more likely to happen anyway, and thus the occurance of tails must not have surprised you that much.
 
@@ -101,12 +101,75 @@ $$
 
 This surprise value is formally known as the _entropy_ or _information content_ of the event. The entropy $H(p)$ quantifies the amount of uncertainty packed in an event.
 
-### Entopy of the Distribution
+### Entropy of the Distribution
 
-Now that we have the the entropy of a single event, we can calculate the average entropy of the entire distribution, by just taking the sum of entopies of all the possible events weighted by their probabilities
+Now that we have the the entropy of a single event, we can calculate the average entropy of the entire distribution, by just taking the sum of entropies of all the possible events weighted by their probabilities
 
 $$
 H(P) = \sum_{s} p_s \log \left( \frac{1}{p_s} \right)
 $$
 
-This quantity is called the entropy of the distribution (as opposed of entopy of a single event)
+This quantity is called the entropy of the distribution (as opposed of entropy of a single event). This tell you how much surprised you will be on average when observing outcomes from this probability distribution. In other words, this is the **inherent uncertainty** packed into a distribution.
+
+### Cross Entropy
+
+To compute the entropy, we need access to underlying probability distribution. But this is often not the case for real world data. When you observe the outcome of a random variable, we do not know its true distribution (which is often called the "ground truth" distribution). Instead we create an internal model of what the underlying probability distribution _should be_. This model (assuming it is correct) is then used to assign probabilistic and to analyze the behaviour of data. The true underlying distribution is hidden and, in most cases, too complex to be modeled realistically. So all we have are approximate models of it. Most of the times these approximations capture all we need for practical purposes.
+
+As an example, the honest, true distribution of a fair die actually contains extra events such as landing on a corner, or getting eaten by a wolf, albeit with very small probabilities. But to model a fair die, we approximate its distribution as a uniform distribution that has only six events, all of which have equal probability of $1/6$.
+
+But what if the true distribution and the modeled distribution are way too far apart ? Consider a coin that is modeled as a fair coin with equal probability for both heads and tails, but instead is actually a coin biased towards tails with probability $0.9$. In this case the difference between true distribution and its model is huge.
+
+Suppose you go ahead and flip this coin 10 times, getting tails 10 times in a row. Under your assumed model, where the probability of getting a tail is $0.5$, the entropy of this range of outcomes is:
+
+$$
+10 \times H(0.5) = 10 \times \log (1/0.5) \approx 6.93
+$$
+
+However according to the coin's true distribution, the entropy is:
+
+$$
+10 \times H(0.9) = 10 \times \log (1/0.9) \approx 1.05
+$$
+
+As you can see, the surprise value your model predicts is much larger than its true value. This difference in entropy is only caused because of the wrong choice of the model we believed in. To solve this, we need some measure of "relative" entropy between two distributions to compare the true one to the predicted one, and this brings us to the idea of cross entropy...
+
+Consider a ground truth distribution $P$, and a modeled distribution $Q$. The _cross entropy_ between $P$ and $Q$, denoted as $H(P,Q)$, is defined as:
+
+$$
+H(P, Q) = \sum_{s} p_s \log \left( \frac{1}{q_s} \right)
+$$
+
+Here, the individual event probabilities are taken from the modeled distribution $Q$, but the probability weights are taken from the true distribution $P$. This gives us the average surprised we will observe from a random variable coming from the true distribution $P$, while believing in the modeled distribution $Q$.
+
+This surprise calculated from cross entropy can come from two sources. 1) Due to believing in the wrong model. In other words because of the huge difference between the true and modeled distribution, and 2) because of the inherent uncertainty (entropy) of the underly true distribution itself. When $P = Q$ i.e when we have an perfect model, the cross entropy is just equal to the entropy:
+
+$$
+H(P, P) = \sum_{s} p_s \log \left( \frac{1}{p_s} \right) = H(P)
+$$
+
+Another notable thing about cross entropy is that it is not commutative i.e
+
+$$
+H(P, Q) \ne H(Q, P)
+$$
+
+### Kullback–Leibler Divergence
+
+If we take the "combined" uncertainty (cross entropy) of $P$ and $Q$, and subtract from it the inherent uncertainty (entropy) of the true distribution $P$, we will be left with uncertainty between these two distribution from the first source only (mentioned above) i.e extra uncertainty induced only due to believing in the wrong model $Q$. This is called the Kullback–Leibler Divergence (or KL-divergence for short) and is denoted as $D_{KL}(P \space \Vert \space Q)$.
+
+$$
+\begin{align*}
+D_{KL}(P \space \Vert \space Q) &= H(P, Q) - H(P) \\
+&= \sum_{s} p_s \log \left( \frac{p_s}{q_s} \right)
+\end{align*}
+$$
+
+We can interpret this quantity as a "distance" between these two distributions, and this will tell us how far apart the distribution $Q$ is from $P$. When $P = Q$, the KL-divergence is zero as the "distance" between distribution is none.
+
+$$
+\begin{align*}
+D_{KL}(P \space \Vert \space P) &= H(P, P) - H(P) \\
+&= H(P) - H(P) \\
+&= 0
+\end{align*}
+$$
