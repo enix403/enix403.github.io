@@ -261,11 +261,31 @@ The sign and magnitude of covariance tell us about the direction and strength of
 
 - **Zero Covariance**: A value close to zero implies no linear relationship between $X$ and $Y$. However, it does not rule out non-linear relationships.
 
-
-
 <div class="flex justify-center w-full max-w-full gap-6 mb-6">
   <div class="max-w-[50%]">
     <img class="w-full max-w-full" src={CovZero}>
     <p class="text-center text-content3 !mt-2">Zero Covariance</p>
   </div>
 </div>
+
+## Correlation
+
+While covariance helps quantify the relationship between two variables, it often raises an important question: How do we compare the relationships across different datasets or variables with varying units or scales? This is where correlation comes into play.
+
+Correlation is a normalized version of covariance that measures the strength and direction of the linear relationship between two variables. It is calculated using the formula:
+
+$$
+\text{Corr}(X, Y) = \frac{\text{Cov}(X, Y)}{\sigma_{X}\sigma_{Y}}
+$$
+
+where:
+  - $\text{Cov}(X, Y)$ is the covariance between $X$ and $Y$.
+  - $\sigma_{X}$ and $\sigma_{Y}$ are the standard deviations of $X$ and $Y$, respectively.
+
+Unlike covariance, correlation is dimensionless, meaning it has no units and ranges between $−1$ and $1$
+
+  - $\text{Corr}(X, Y) = +1$: Perfect positive linear relationship.
+  - $\text{Corr}(X, Y) = -1$: Perfect negative linear relationship.
+  - $\text{Corr}(X, Y) \; = \; 0$: No linear relationship
+
+Correlation is often preferred in practical applications because it allows for easy comparison of relationships across different datasets. The bounded range of correlation makes it easier to interpret For example, a correlation of $0.8$ immediately suggests a strong positive relationship.
