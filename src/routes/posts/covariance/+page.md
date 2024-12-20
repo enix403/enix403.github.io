@@ -34,21 +34,17 @@ title: Covariance vs Correlation
   h5,
   h6 {
     font-weight: variables.$font-weight-bold;
-    color: variables.$color-heading;
   }
 
   h1 {
     margin-top: 0;
     font-weight: variables.$font-weight-black;
     font-size: variables.$font-size-6;
-    font-style: italic;
-    color: variables.$color-heading-black;
   }
 
   h2 {
     font-size: variables.$font-size-5;
     font-weight: variables.$font-weight-semibold;
-    color: variables.$color-heading;
   }
 
   h3 {
@@ -218,6 +214,12 @@ title: Covariance vs Correlation
       list-style-position: inside;
     }
   }
+
+  :global(pre.shiki) {
+    padding: 15px;
+    margin: variables.$spacing-0 variables.$spacing-0 variables.$spacing-4 variables.$spacing-0;
+    @apply rounded-lg;
+  }
 </style>
 
 # Taking String Arguments in Rust
@@ -235,6 +237,7 @@ But even after you’ve programmed in Rust for some time, you may still trip on 
 ## Just Reading It
 
 Let’s start with a simple case: a function which merely reads its string argument:
+
 
 ```rust
 fn hello(name: &str) {
@@ -292,7 +295,7 @@ Its sole method, `AsRef::as_ref`, returns a reference to the trait’s type para
 
 The difference is, however, that `AsRef<str>` is implemented for all interesting string types — both in their owned and borrowed versions. This obviates the need for `Deref` coercions and makes the API more convenient.
 
-## Own It
+### Own It
 
 Things get a little more complicated when the string parameter is needed for more than just reading. For storage and potential mutation, a `&str` reference is not enough: you need an actual, full-blown `String` object.
 
