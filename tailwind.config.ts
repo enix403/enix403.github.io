@@ -7,5 +7,7 @@ export default {
     extend: {}
   },
 
-  plugins: [require("rippleui")]
+  plugins: [
+    require('@tailwindcss/typography'),
+  ]
 } satisfies Config;
