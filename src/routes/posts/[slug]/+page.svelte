@@ -1,5 +1,7 @@
 <script lang="ts">
   import type { PageData } from './$types';
+  import clsx from 'clsx';
+
   const { data }: { data: PageData } = $props();
   const { frontmatter, ContentBody } = data;
 </script>
@@ -19,7 +21,14 @@
 <hr />
 
 <main class="max-w-full px-4 py-4">
-  <div class="post-content w-full max-w-[800px] pb-72 mx-auto">
+  <div
+    class={clsx(
+      'mx-auto w-full max-w-[800px] pb-72',
+      'post-content',
+      'prose prose-neutral',
+      'prose-a:text-pink-600 prose-a:no-underline',
+    )}
+  >
     <ContentBody />
   </div>
 </main>
@@ -27,8 +36,8 @@
 <style>
   .post-content :global {
     pre {
-      @apply overflow-x-auto;
       @apply px-2.5 py-2;
+      @apply overflow-x-auto;
     }
 
     .math-display {
