@@ -2,10 +2,21 @@ import { mdsvex, escapeSvelte } from 'mdsvex';
 import adapterStatic from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-import { createHighlighter } from 'shiki'
+import { getSingletonHighlighter } from 'shiki';
 
 import rehypeKatexSvelte from 'rehype-katex-svelte';
 import remarkMath from 'remark-math';
+
+// const theme = "catppuccin-latte"
+// const theme = "kanagawa-wave"
+// const theme = "material-theme"
+// const theme = "material-theme-palenight"
+const theme = 'night-owl';
+// const theme = "rose-pine-moon"
+const highlighter = await getSingletonHighlighter({
+  themes: [theme],
+  langs: ['python']
+});
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -22,21 +33,15 @@ const config = {
       extensions: ['.md'],
       highlight: {
         highlighter: async (code, lang = 'text') => {
-          // const theme = "catppuccin-latte"
-          // const theme = "kanagawa-wave"
-          // const theme = "material-theme"
-          // const theme = "material-theme-palenight"
-          const theme = "night-owl";
-          // const theme = "rose-pine-moon"
-          const highlighter = await createHighlighter({
-            themes: [theme],
-            langs: ['javascript', 'typescript', 'rust', 'python'],
-          })
-          // await highlighter.loadLanguage('javascript', 'typescript', 'rust')
-          const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme: theme }))
-          return `{@html \`${html}\` }`
+          const html = escapeSvelte(
+            highlighter.codeToHtml(code, {
+              lang,
+              theme
+            })
+          );
+          return `{@html \`${html}\` }`;
         }
-      },
+      }
     })
   ],
 
