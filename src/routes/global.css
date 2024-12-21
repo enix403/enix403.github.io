@@ -3,6 +3,7 @@
 @import 'tailwindcss/utilities';
 
 @import '@fontsource-variable/archivo';
+@import '@fontsource-variable/fira-code';
 
 html,
 body {
@@ -10,7 +11,11 @@ body {
 }
 
 html {
-  font-family: 'Archivo Variable';
+  font-family: 'Archivo Variable', sans-serif;
+}
+
+code, pre, tt, kbd, samp {
+  font-family: "Fira Code Variable", monospace;
 }
 
 body {
