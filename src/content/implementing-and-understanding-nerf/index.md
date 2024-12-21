@@ -1,6 +1,6 @@
 ---
 title: Implementing And Understanding NeRF
-date: '2024-12-21T15:29:33.000Z'
+date: '2024-12-21T17:50:26.323Z'
 ---
 
 ### **Introduction**
