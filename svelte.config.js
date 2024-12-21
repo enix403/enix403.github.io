@@ -22,8 +22,12 @@ const config = {
       extensions: ['.md'],
       highlight: {
         highlighter: async (code, lang = 'text') => {
-          // const theme = "material-theme-darker"
-          const theme = "catppuccin-latte"
+          // const theme = "catppuccin-latte"
+          // const theme = "kanagawa-wave"
+          // const theme = "material-theme"
+          // const theme = "material-theme-palenight"
+          const theme = "night-owl";
+          // const theme = "rose-pine-moon"
           const highlighter = await createHighlighter({
             themes: [theme],
             langs: ['javascript', 'typescript', 'rust', 'python'],
