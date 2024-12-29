@@ -22,11 +22,10 @@
 
 <!-- ------------------------- -->
 
-<div class="max-w-full px-5 py-4">
-  <div class={clsx('mx-auto w-full max-w-[800px] pb-40', 'post-content', 'prose')}>
-    <div class="mt-10">
-      <!-- <h1 class="text-center font-semibold font-mono text-[#296FFD]"> -->
-      <h1 class="text-center font-semibold text-[#da1ad4]">
+<!-- <div class="max-w-full" data-css="px-5 py-4">
+  <div class={clsx('mx-autod w-full', 'post-content', 'prose')} data-css="max-w-[800px] pb-40">
+    <div>
+      <h1 class="text-center font-semibold">
         {frontmatter.title}
       </h1>
       <p class="font-mono text-sm font-thin text-slate-500">
@@ -35,11 +34,26 @@
     </div>
     <ContentBody />
   </div>
+</div> -->
+
+<div class="post-content">
+  <!-- Title -->
+  <h1 class="font-semibold">
+    {frontmatter.title}
+  </h1>
+  <!-- Date -->
+  <p class="font-mono text-sm font-thin text-slate-500">
+    {format(dateParsed, 'MMMM dd, yyyy')}
+  </p>
+  <!-- Body -->
+  <ContentBody />
 </div>
+
 
 <style>
   .post-content :global {
     /* ----- Colors ----- */
+    @apply prose !max-w-none;
     @apply prose-invert;
     @apply prose-a:no-underline;
     @apply prose-a:text-yellow-400 hover:prose-a:text-yellow-500;

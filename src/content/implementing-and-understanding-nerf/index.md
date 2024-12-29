@@ -5,7 +5,7 @@ date: '2024-12-21T17:50:26.323Z'
 
 ### **Introduction**
 
-Neural Radiance Fields (NeRF), introduced in the paper [_"NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis"_][nerf-paper] by Mildenhall et al., offers a groundbreaking approach for representing volumetric fields and 3D scenes. By leveraging the power of deep neural networks and differentiable volume rendering, NeRF can synthesize photo-realistic views of complex scenes from a sparse set of input images.
+Neural Radiance Fields (NeRF), introduced in the paper ["NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis"][nerf-paper] by Mildenhall et al., offers a groundbreaking approach for representing volumetric fields and 3D scenes. By leveraging the power of deep neural networks and differentiable volume rendering, NeRF can synthesize photo-realistic views of complex scenes from a sparse set of input images.
 
 Unlike traditional methods, NeRF encodes scene geometry and appearance into a continuous 5D function parameterized by a neural network. This function takes as input a 3D spatial point and a viewing direction and outputs color ($RGB$) and volume density values. This formulation allows NeRF to model intricate lighting effects, occlusions, and detailed textures.
 
@@ -444,7 +444,7 @@ There are some interesting ideas that I haven't touched in this post, such as hi
 
 One thing to note is that the standard NeRF formulation assumes that the scene is static, making it unsuitable for dynamic environments where objects or lighting conditions change over time. Extensions like _Dynamic NeRF_ attempt to address this, but these approaches add complexity and often require significantly more data.
 
-At the end, I recommend reading the original paper ["NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis."][nerf-paper]
+At the end, I recommend reading the original paper ["NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis"][nerf-paper] by Mildenhall et al.
 
 
 [nerf-paper]: <https://arxiv.org/abs/2003.08934>
