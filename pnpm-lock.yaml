@@ -20,6 +20,9 @@ importers:
       '@fontsource/pt-serif':
         specifier: ^5.1.1
         version: 5.1.1
+      '@rodneylab/svelte-social-icons':
+        specifier: ^0.0.31
+        version: 0.0.31(svelte@5.15.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -390,6 +393,11 @@ packages:
 
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
+
+  '@rodneylab/svelte-social-icons@0.0.31':
+    resolution: {integrity: sha512-M5KKxmwwuVK7eUIzrRY11+Dmj1ElQwvPFzPb2pBo4c6daBcu/CBYMotyafo7ZM+8E1S3qOz3ruhS3Wqq8SX1Kw==}
+    peerDependencies:
+      svelte: '>=3 <6'
 
   '@rollup/rollup-android-arm-eabi@4.28.1':
     resolution: {integrity: sha512-2aZp8AES04KI2dy3Ss6/MDjXbwBzj+i0GqKtWXgw2/Ma6E4jJvujryO6gJAghIRVz7Vwr9Gtl/8na3nDUKpraQ==}
@@ -1770,6 +1778,10 @@ snapshots:
     optional: true
 
   '@polka/url@1.0.0-next.28': {}
+
+  '@rodneylab/svelte-social-icons@0.0.31(svelte@5.15.0)':
+    dependencies:
+      svelte: 5.15.0
 
   '@rollup/rollup-android-arm-eabi@4.28.1':
     optional: true
