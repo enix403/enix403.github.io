@@ -22,7 +22,7 @@
 
 <div class="post-wrapper">
   <!-- Title -->
-  <header class="border-b border-[#413e3e] pb-3 prose-sm md:prose-base">
+  <header class="border-b border-app-line pb-3 prose-sm md:prose-base">
     <h1 class="!my-0 font-semibold">
       {frontmatter.title}
     </h1>

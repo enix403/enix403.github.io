@@ -4,10 +4,14 @@ export default {
   content: ['./src/**/*.{html,js,svelte,svx,md,ts}'],
 
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        'app-line': '#413E3E'
+      }
+    }
   },
 
   plugins: [
     require('@tailwindcss/typography'),
   ]
-} satisfies Config;
+} as Config;
