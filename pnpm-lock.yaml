@@ -17,6 +17,9 @@ importers:
       '@fontsource-variable/fira-code':
         specifier: ^5.1.0
         version: 5.1.0
+      '@fontsource/pt-serif':
+        specifier: ^5.1.1
+        version: 5.1.1
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -261,6 +264,9 @@ packages:
 
   '@fontsource-variable/fira-code@5.1.0':
     resolution: {integrity: sha512-fwJbJLvyZ2BhgBSPYCNsrQ6IFQTpRu9GWXY8N20wHTpbhV0Ro5QJihiZV060Ay3kVR6IVH/oSVe/cr7Ube28gg==}
+
+  '@fontsource/pt-serif@5.1.1':
+    resolution: {integrity: sha512-NJUsbW+mZqb4f5cvi2kCZhtv62mbdGMEmH6O0ZK8qK94OI0nKrslVCEXEabvFVwVE3sMmwnhGyUP06eQelgASA==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -1658,6 +1664,8 @@ snapshots:
   '@fontsource-variable/archivo@5.1.0': {}
 
   '@fontsource-variable/fira-code@5.1.0': {}
+
+  '@fontsource/pt-serif@5.1.1': {}
 
   '@isaacs/cliui@8.0.2':
     dependencies:
