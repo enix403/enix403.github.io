@@ -11,7 +11,7 @@
     <p class="mt-2 text-lg text-[#B2ACA2]">Qateef Ahmad's Blogs</p>
   </div>
 
-  <div class="mx-auto max-w-[1200px]">
+  <div class="mx-auto max-w-[1280px] mb-20">
     <div class="pt-10">
       {@render children?.()}
     </div>
