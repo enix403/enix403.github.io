@@ -19,9 +19,32 @@ Probability distributions underly most of generative AI. Once an AI model has le
 
 You might have learned about probability in high school in terms of fractions, such as 1/2 for getting heads after flipping a coin and 1/6 for getting a 4 after rolling a die. This approach is called the *frequentist view*, where probabilities are interpreted as the fractions of number of possible and total events. This approach does work for simple scenarios like rolling a die, but things can get complicated when continous and infinite events are involved.
 
-To see this, consider that your weather app tells you that there is a 35% chance that tomorrow will be snowfall. Now how can we apply the frequentist view here? We do intuitively understand this 35% percent chance of snowfall, but there is no way we can fit this into a fraction involving something like number of possible and/or total event.
+To see this, consider that your weather app tells you that there is a $35$% chance that tomorrow will be snowfall. Now how can we apply the frequentist view here? We do intuitively understand this $35$% percent chance of snowfall, but there is no way we can fit this into a fraction involving something like number of possible and/or total events.
 
 Anyway, here we will start fresh with the *Bayesian view* of probability.
 
-Suppose that we have a set of $N$ possible outcomes $\{ E_1, E_2, \dots, E_N \}$ to which we assign probabilities $\{ p_1, p_2, \dots, p_N \}$. Each of these probabilities $p_i$ is a number between 0 and 1, and is a **measure of belief** or **confidence** about the outcome $E_i$ happening.
+Suppose that we have a set of $N$ possible outcomes $\{ s_1, \dots, s_N \}$ to which we assign probabilities $\{ p_1, \dots, p_N \}$. Each of these probabilities $p_i$ is a number between 0 and 1, and is a **measure of belief** or **confidence** about the outcome $E_i$ happening. Like in the above example, when we say that there is a $35$% chance that tomorrow will be snowfall, it means that the the outcome of snow falling tomorrow has been **assigned** the probability or **degree of belief** of $0.35$. Note that there is no indication of fractions or repeated experiments whatsoever in this approach.
 
+Now this interpretation does look very general, it is still constrained by some rules. First of all the sum of probabilities two events represents the probability of atleast one of them happening:
+
+$$
+p(A \thickspace \text{or} \thickspace B) = p(A) + p(B)
+$$
+
+Additionally, the sum of probabilities over all possible outcomes must sum to $1$:
+
+$$
+\sum_{s} p(s) = 1
+$$
+
+In case of a continous set of events, like heights of people, the probabilites must integrate to $1$:
+
+$$
+\int_{s} p(s) = 1
+$$
+
+Now this assignment of probabilities to events is what's called a _probability distribution_. It is a function $p(e)$ that maps an event to its assigned probability.
+
+### Designing Probability Distributions
+
+Because all probabilities must add up to $1$, we cannot just assign or manipulate the probability of one event independently of other events. We must talk about the probability distribution of the entire set of events, rather than considering only one event. A probability distribution characterizes the system _as a whole_, describing all the information and uncertainty present in all of its events.
