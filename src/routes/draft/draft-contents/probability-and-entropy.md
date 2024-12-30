@@ -13,7 +13,7 @@ This probabilistic view is also the backbone of the incredible advancements in m
 
 At its core, probability is about quantifying uncertainty, and that’s where probability distributions come into play. A probability distribution is a function or rule that tells us how probabilities are spread over the possible outcomes of a random event. Think of it as a map of uncertainty, showing where outcomes are likely to cluster and where they are more sparse. In a way, probability distributions work just like your brain considering a range of possibilities in a situation. Instead of guessing a single outcome, it assigns different likelihoods to all potential outcomes, creating a spectrum of possibilities
 
-Probability distributions underly most of generative AI. Once an AI model has learned the probability distribution of a dataset—be it images, text, or audio—it can use this knowledge to sample new data points. Sampling involves selecting values based on the probabilities defined by the distribution, allowing the model to generate outputs that are statistically similar to the original data. For example, in generative adversarial networks (GANs) or diffusion models, the model learns to approximate the underlying distribution of the training data. Then, by sampling from this distribution, it can generate new, realistic images or soundscapes. Similarly, language models like GPT understand the probability of words and sentences in a given context, enabling them to produce coherent and contextually relevant text.
+Probability distributions underly most of generative AI. Once an AI model has learned the probability distribution of a dataset—be it images, text, or audio—it can use this knowledge to sample new data points. Sampling involves selecting values based on the probabilities defined by the distribution, allowing the model to generate outputs that are statistically similar to the original data. For example, in generative adversarial networks (GANs) or diffusion models, the model learns to approximate the underlying distribution of the training data. Then, by _sampling_ from this distribution, it can generate new, realistic images or soundscapes. Similarly, language models like GPT understand the probability of words and sentences in a given context, enabling them to produce coherent and contextually relevant text.
 
 ### The Bayesian View of Probability
 
@@ -51,4 +51,13 @@ Because all probabilities must add up to $1$, we cannot just assign or manipulat
 
 We can see some examples of probability distributions, for example the **Uniform Distribution**, where all the events are equally likely to happen. The distribution of a fair 6 sided die is such uniform distribution. Each of the six sides has the same probability $1/6$.
 
-Another example of a continuous probability distribution is the distribution of heights of a large group of people. It usually follows the [**Gaussian Distribution**](https://en.wikipedia.org/wiki/Normal_distribution), which is widely used to model real-world.
+One other example of a continuous probability distribution might be the distribution of heights of a large group of people. It usually follows the [**Gaussian Distribution**](https://en.wikipedia.org/wiki/Normal_distribution), which is widely used to model real-world.
+
+### Interacting with Probability Distributions - Sampling
+
+Machine learning models often interact with probability distributions in high-dimensional spaces, sometimes involving thousands or even millions of features. These models learn the underlying distribution of the input data by capturing the relationships and patterns that define how the data behaves. Now once the model has learned the probability distribution, it can **sample** from it to generate new data that shares the same characteristics as the training data.
+
+To understand the concept of sampling in a simpler context, consider rolling a fair six-sided die. Everytime the die is rolled, it generate a new _sample_ according to the probabilities assigned by the distribution. You can keep rolling the die, and you will get different results at random. This is called **sampling**. It means selecting an outcome according to this probability distribution. The distribution in this case is uniform, where each outcome is equally likely with probability of $1/6$.
+
+However the distribution is not always uniform. To understand this, consider an **unfair** coin that is biased towards tails. It follows a distribution where flipping a tails has a probability of $0.9$, while that of flipping a heads is only $0.1$. Now when we sample from this distribution, most of the times we expect to see that the outcome is tails instead of heads.
+
