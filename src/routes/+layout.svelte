@@ -18,13 +18,13 @@
     <p class="text-sm text-[#B2ACA2] md:mt-2 md:text-lg">Qateef Ahmad's Blogs</p>
   </div>
 
-  <div class="mx-auto mb-20 flex max-w-[1280px] items-stretch">
-    <div class="max-w-full flex-1 px-6 pt-10 md:px-8">
+  <div class="mx-auto flex max-w-[1280px] items-stretch max-xl:flex-col xl:mb-20">
+    <div class="max-w-full flex-1 px-6 pt-10 pb-12 md:px-8">
       <div class="w-full max-w-full">
         {@render children?.()}
       </div>
     </div>
-    <div class="w-56 shrink-0 bg-[#191917] px-4 py-4 text-[0.813rem] max-xl:hidden">
+    <div class="xl:w-56 shrink-0 bg-[#191917] px-4 py-4 text-[0.813rem]">
       <h2 class="border-b border-app-line text-lg">About Me</h2>
       <p class="mt-1">
         Hi, I am a self-taught programmer that likes technology, programming, mathematics, and
