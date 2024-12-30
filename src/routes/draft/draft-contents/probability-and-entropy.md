@@ -61,3 +61,10 @@ To understand the concept of sampling in a simpler context, consider rolling a f
 
 However the distribution is not always uniform. To understand this, consider an **unfair** coin that is biased towards tails. It follows a distribution where flipping a tails has a probability of $0.9$, while that of flipping a heads is only $0.1$. Now when we sample from this distribution, most of the times we expect to see that the outcome is tails instead of heads.
 
+## Analysis of Probability Distributions
+
+Now that the foundational stuff is cleared up, we can start exploring some mathematical tools to study and understand probability distributions.
+
+### Entopy
+
+Let's start with the notion of _surprise_. Suppose you are about to flip the unfair coin as described above, and somebody comes up to you and predicts that the outcome will be tails. You say, "Well, ahm" and go ahead and flip the coin. Now, the coin does flip to a tail, hence the prediction did hold true. _Would you be surprised or not_ ? You knew that the tails was much more likely to happen anyway, and thus the occurance of tails must not have surprised you that much
