@@ -25,13 +25,40 @@ code, pre, tt, kbd, samp {
 
 :root {
   --app-bg-color: #1C1E1E;
+  --app-heading-color: #FFFFFF;
+  --app-text-color: #E8E6E3;
+  --app-muted-color: #B2ACA2;
+  --app-math-color: #E8E6E3;
 }
+
 
 body {
   overflow-x: hidden;
   overflow-y: auto;
 
-  color: rgb(224, 221, 217);
   background-color: var(--app-bg-color);
+  /* color: rgb(224, 221, 217); */
+  color: var(--app-text-color);
 }
 
+@layer components {
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--app-heading-color);
+  }
+
+  .r {
+    @apply bg-red-400;
+  }
+
+  .g {
+    @apply bg-green-400;
+  }
+
+  .b {
+    @apply bg-blue-400;
+  }
+
+  .y {
+    @apply bg-yellow-400;
+  }
+}
