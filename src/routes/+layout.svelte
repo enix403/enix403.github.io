@@ -10,9 +10,11 @@
 
 <main class="min-h-screen bg-[--app-bg-color]">
   <div class="bg-[#262A2B] px-6 py-8 md:px-8">
-    <h1 class="text-2xl leading-9 sm:text-3xl md:text-4xl xl:text-[2.5rem]">
-      Welcome to my place,
-    </h1>
+    <a href="/">
+      <h1 class="text-2xl leading-9 sm:text-3xl md:text-4xl xl:text-[2.5rem]">
+        Welcome to my place,
+      </h1>
+    </a>
     <p class="text-sm text-[#B2ACA2] md:mt-2 md:text-lg">Qateef Ahmad's Blogs</p>
   </div>
 
@@ -23,7 +25,7 @@
       </div>
     </div>
     <div class="w-56 shrink-0 bg-[#191917] px-4 py-4 text-[0.813rem] max-xl:hidden">
-      <h2 class="border-app-line border-b text-lg">About Me</h2>
+      <h2 class="border-b border-app-line text-lg">About Me</h2>
       <p class="mt-1">
         Hi, I am a self-taught programmer that likes technology, programming, mathematics, and
         artificial intelligence. Beyond coding, I enjoy writing articles here.
