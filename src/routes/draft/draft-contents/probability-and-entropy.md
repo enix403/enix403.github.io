@@ -48,3 +48,7 @@ Now this assignment of probabilities to events is what's called a _probability d
 ### Designing Probability Distributions
 
 Because all probabilities must add up to $1$, we cannot just assign or manipulate the probability of one event independently of other events. We must talk about the probability distribution of the entire set of events, rather than considering only one event. A probability distribution characterizes the system _as a whole_, describing all the information and uncertainty present in all of its events.
+
+We can see some examples of probability distributions, for example the **Uniform Distribution**, where all the events are equally likely to happen. The distribution of a fair 6 sided die is such uniform distribution. Each of the six sides has the same probability $1/6$.
+
+Another example of a continuous probability distribution is the distribution of heights of a large group of people. It usually follows the [**Gaussian Distribution**](https://en.wikipedia.org/wiki/Normal_distribution), which is widely used to model real-world.
