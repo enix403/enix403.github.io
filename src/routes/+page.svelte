@@ -1,5 +1,12 @@
-<script>
+<script lang="ts">
   import PostLink from '$lib/components/PostLink.svelte';
+  import type { PageData } from './$types';
+
+  const { data }: { data: PageData } = $props();
+  const { posts } = data;
+
+  console.log(posts);
+
 </script>
 
 <h1 class="mb-7 border-b border-app-line pb-3 text-4xl font-semibold">Blogs</h1>
