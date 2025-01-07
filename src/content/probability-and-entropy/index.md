@@ -103,7 +103,7 @@ This surprise value is formally known as the _entropy_ or _information content_ 
 
 ### Entropy of the Distribution
 
-Now that we have the the entropy of a single event, we can calculate the average entropy of the entire distribution, by just taking the sum of entropies of all the possible events weighted by their probabilities
+Now that we have the the entropy of a single event, we can calculate the average entropy of the entire distribution, by just taking the sum of entropies of all the possible events weighted by their probabilities:
 
 $$
 H(P) = \sum_{s} p_s \log \left( \frac{1}{p_s} \right)
@@ -155,7 +155,7 @@ $$
 
 ### Kullback–Leibler Divergence
 
-If we take the "combined" uncertainty (cross entropy) of $P$ and $Q$, and subtract from it the inherent uncertainty (entropy) of the true distribution $P$, we will be left with uncertainty between these two distribution from the first source only (mentioned above) i.e extra uncertainty induced only due to believing in the wrong model $Q$. This is called the Kullback–Leibler Divergence (or KL-divergence for short) and is denoted as $D_{KL}(P \space \Vert \space Q)$.
+If we take the "combined" uncertainty (cross entropy) of $P$ and $Q$, and subtract from it the inherent uncertainty (entropy) of the true distribution $P$, we will be left with uncertainty between these two distribution from the first source only (mentioned above) i.e extra uncertainty induced only due to believing in the wrong model $Q$. This is called the Kullback–Leibler Divergence (or KL-divergence for short) and is denoted as $D_{KL}(P \space \Vert \space Q)$
 
 $$
 \begin{align*}
@@ -164,7 +164,7 @@ D_{KL}(P \space \Vert \space Q) &= H(P, Q) - H(P) \\
 \end{align*}
 $$
 
-We can interpret this quantity as a "distance" between these two distributions, and this will tell us how far apart the distribution $Q$ is from $P$. When $P = Q$, the KL-divergence is zero as the "distance" between distribution is none.
+We can interpret this quantity as a "distance" between these two distributions, and this will tell us how far apart the distribution $Q$ is from $P$. Indeed, when $P = Q$, the KL-divergence is zero as the "distance" between distribution is none:
 
 $$
 \begin{align*}
